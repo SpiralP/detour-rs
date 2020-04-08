@@ -11,6 +11,10 @@
 ///
 /// - A `Patcher`, modifies a target in-memory.
 /// - A `Trampoline`, generates a callable address to the target.
+#[cfg(windows)]
+pub use self::microsoft_detours::Detour;
+
+#[cfg(not(windows))]
 pub use self::detour::Detour;
 
 use cfg_if::cfg_if;
@@ -26,7 +30,12 @@ cfg_if! {
     }
 }
 
+#[cfg(windows)]
+mod microsoft_detours;
+
+#[cfg(not(windows))]
 mod detour;
+
 mod memory;
 
 /// Returns true if the displacement is within a certain range.

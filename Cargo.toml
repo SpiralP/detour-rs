@@ -23,6 +23,10 @@ mmap = { package = "mmap-fixed", version = "0.1.0" }
 region = "2.0.0"
 slice-pool = "0.4.1"
 
+[target."cfg(windows)".dependencies]
+detours-sys = { git = "https://github.com/SpiralP/rust-detours-sys.git" }
+winapi = { version = "0.3.7", features = ["processthreadsapi"] }
+
 [dev-dependencies]
 matches = "0.1.8"
 

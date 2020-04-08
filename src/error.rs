@@ -27,6 +27,9 @@ pub enum Error {
   UnsupportedInstruction,
   /// A memory operation failed.
   RegionFailure(region::Error),
+
+  #[cfg(windows)]
+  MicrosoftDetours(i32),
 }
 
 impl StdError for Error {
@@ -51,6 +54,9 @@ impl fmt::Display for Error {
       Error::OutOfMemory => write!(f, "Cannot allocate memory"),
       Error::UnsupportedInstruction => write!(f, "Address contains an unsupported instruction"),
       Error::RegionFailure(ref error) => write!(f, "{}", error),
+
+      #[cfg(windows)]
+      Error::MicrosoftDetours(ref result) => write!(f, "Microsoft Detours error {:#x}", result),
     }
   }
 }
