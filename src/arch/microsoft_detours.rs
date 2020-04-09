@@ -45,7 +45,6 @@ impl Detour {
   }
 
   pub unsafe fn enable(&self) -> Result<()> {
-    println!("detour");
     if self.enabled.load(Ordering::SeqCst) {
       return Ok(());
     }
@@ -56,7 +55,6 @@ impl Detour {
     try_error(DetourUpdateThread(GetCurrentThread()))?;
     try_error(DetourAttach(&mut trampoline, self.detour as *mut c_void))?;
     try_error(DetourTransactionCommit())?;
-    println!("detour");
 
     self.trampoline.set(trampoline as *const ());
 
