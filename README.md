@@ -20,8 +20,20 @@ default.
 
 ## Platforms
 
-- `x86/x64`: Windows, Linux & macOS.
-- `ARM`: Not implemented, but foundation exists.
+This library provides CI for these targets:
+
+- Linux
+  * `i686-unknown-linux-gnu`
+  * `x86_64-unknown-linux-gnu`
+  * `x86_64-unknown-linux-musl`
+- Windows
+  * `i686-pc-windows-gnu`
+  * `i686-pc-windows-msvc`
+  * `x86_64-pc-windows-gnu`
+  * `x86_64-pc-windows-msvc`
+- macOS
+  * ~~`i686-apple-darwin`~~
+  * `x86_64-apple-darwin`
 
 ## Installation
 
@@ -115,7 +127,7 @@ derivative code of his work.
   trailing `NOP` instructions will be replaced, to make room for the detour.*
 
 <!-- Links -->
-[azure-shield]: https://dev.azure.com/darfink/detour-rs/_apis/build/status/darfink.detour-rs?branchName=master
+[azure-shield]: https://img.shields.io/azure-devops/build/darfink/detour-rs/2/master?label=Azure%20Pipelines&logo=azure-pipelines&style=flat-square
 [azure]: https://dev.azure.com/darfink/detour-rs/_build/latest?definitionId=1&branchName=master
 [crate-shield]: https://img.shields.io/crates/v/detour.svg?style=flat-square
 [crate]: https://crates.io/crates/detour
